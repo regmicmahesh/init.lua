@@ -1,7 +1,7 @@
 
 require("core.remap")
 require("core.packer")
-require("core.appearance")
-require("core.set")
+require("core.appearance").setup()
+require("core.set").setup()
 
 require("core.plugins")
