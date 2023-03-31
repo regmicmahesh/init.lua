@@ -31,7 +31,15 @@ M.setup = function()
 
     vim.opt.updatetime = 50
 
-    -- vim.opt.colorcolumn = "80"
+
+    vim.g.netrw_banner = 0
+    vim.g.netrw_liststyle = 3
+    vim.g.netrw_altv = 1
+
+    -- vim.g.netrw_winsize = 25
+
+    -- vim.g.netrw_browse_split = 4
+
 
 
 end
