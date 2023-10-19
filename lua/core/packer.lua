@@ -2,6 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
+
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.1', requires = { { 'nvim-lua/plenary.nvim' } } }
     use { "catppuccin/nvim", as = "catppuccin" }
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
@@ -35,19 +36,18 @@ return require('packer').startup(function(use)
 
     use { "github/copilot.vim" }
 
-
     use { "jose-elias-alvarez/null-ls.nvim" }
 
 
-    -- use {
-    --     "nvim-neo-tree/neo-tree.nvim",
-    --     branch = "v2.x",
-    --     requires = {
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    --         "MunifTanjim/nui.nvim",
-    --     }
-    -- }
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        }
+    }
 
     use {
         'numToStr/Navigator.nvim',
@@ -62,4 +62,32 @@ return require('packer').startup(function(use)
     use { "numToStr/Comment.nvim" }
 
     use { "mg979/vim-visual-multi" }
+
+
+    use { "https://gitlab.com/schrieveslaach/sonarlint.nvim.git", as = "sonarlint", cond = true, config = function()
+        require('sonarlint').setup({
+            server = {
+                cmd = {
+                    'sonarlint-language-server',
+                    '-stdio',
+                    '-analyzers',
+                    vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarpython.jar"),
+                    vim.fn.expand("$MASON/share/sonarlint-analyzers/sonargo.jar"),
+                    vim.fn.expand("$MASON/share/sonarlint-analyzers/sonarjs.jar"),
+                    vim.fn.expand("$MASON/share/sonarlint-analyzers/sonariac.jar"),
+                }
+            },
+            filetypes = {
+                'python',
+                'go',
+                'javascript',
+                'javascriptreact',
+                'typescript',
+                'typescriptreact',
+                'terraform',
+
+            }
+        })
+    end,
+    }
 end)

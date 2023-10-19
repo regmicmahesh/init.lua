@@ -1,5 +1,8 @@
 local lsp = require('lsp-zero')
 
+
+local lsp_config = require('lspconfig')
+
 lsp.preset({ name = 'recommended', suggest_lsp_servers = false })
 
 
@@ -27,6 +30,8 @@ lsp.setup_nvim_cmp({
 
 
 
+
+
 lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
@@ -41,6 +46,25 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
     vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end, opts)
 end)
+
+lsp.configure('tsserver', {
+    single_file_support = false,
+    root_dir = lsp_config.util.root_pattern('package.json'),
+})
+
+lsp.configure('denols', {
+    single_file_support = false,
+    root_dir = lsp_config.util.root_pattern('deno.json', 'deno.jsonc'),
+})
+
+lsp.configure("yamlls", {
+    settings = {
+        yaml = {
+            keyOrdering = false
+        }
+    }
+})
+
 
 
 lsp.nvim_workspace()
