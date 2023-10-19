@@ -21,8 +21,6 @@ vim.keymap.set({'n', 't'}, '<C-l>', '<CMD>NavigatorRight<CR>')
 vim.keymap.set({'n', 't'}, '<C-k>', '<CMD>NavigatorUp<CR>')
 vim.keymap.set({'n', 't'}, '<C-j>', '<CMD>NavigatorDown<CR>')
 
--- open neotree
--- lol im not a noob anymore to use file explorer. embrace the vim and it's builtin netrw file explorer
 vim.keymap.set("n", "<leader>e", ":NeoTreeFocusToggle<CR>", {silent = true})
 
 

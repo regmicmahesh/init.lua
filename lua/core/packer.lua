@@ -63,7 +63,6 @@ return require('packer').startup(function(use)
 
     use { "mg979/vim-visual-multi" }
 
-
     use { "https://gitlab.com/schrieveslaach/sonarlint.nvim.git", as = "sonarlint", cond = true, config = function()
         require('sonarlint').setup({
             server = {
@@ -90,4 +89,5 @@ return require('packer').startup(function(use)
         })
     end,
     }
+    use { "christianrondeau/vim-base64" }
 end)

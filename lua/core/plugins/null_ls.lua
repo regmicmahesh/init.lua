@@ -5,5 +5,9 @@ null_ls.setup({
         null_ls.builtins.formatting.isort,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.terraform_fmt,
+        null_ls.builtins.formatting.shfmt,
+
+
     }
 })
